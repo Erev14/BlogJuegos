@@ -1,0 +1,65 @@
+version: "3.1"
+services:
+  memcached:
+    image: memcached:alpine
+    container_name: blogjuegos-memcached
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: blogjuegos-mailhog
+    ports:
+      - "3101:8025"
+
+  redis:
+    image: redis:alpine
+    container_name: blogjuegos-redis
+
+  mysql:
+    image: mysql:8.0
+    container_name: blogjuegos-mysql
+    working_dir: /application
+    volumes:
+      - .:/application
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=blog_juego
+      - MYSQL_USER=pruebas
+      - MYSQL_PASSWORD=pruebas
+    ports:
+      - "3102:3306"
+
+  mariadb:
+    image: mariadb:10.4
+    container_name: blogjuegos-mariadb
+    working_dir: /application
+    volumes:
+      - .:/application
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=blog_juego
+      - MYSQL_USER=pruebas
+      - MYSQL_PASSWORD=pruebas
+    ports:
+      - "3103:3306"
+
+  elasticsearch:
+    image: elasticsearch:6.5.4
+    container_name: blogjuegos-elasticsearch
+
+  webserver:
+    image: nginx:alpine
+    container_name: blogjuegos-webserver
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "3100:80"
+
+  php-fpm:
+    build: phpdocker/php-fpm
+    container_name: blogjuegos-php-fpm
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
