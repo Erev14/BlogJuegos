@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'user_type'
+        'name', 'email', 'password', 'user_type',
     ];
 
     /**
@@ -37,7 +37,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Get the profile associated with the user.
+     */
     public function profile() {
         return $this->hasOne('App\Profile', 'user_id');
     }
+
+    /**
+     * Get the blog publications from the user.
+     */
+    public function publications() {
+        return $this->hasMany('App\Publication');
+    }
+
 }
