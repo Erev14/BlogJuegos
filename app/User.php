@@ -51,4 +51,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Publication');
     }
 
+    /**
+     * The users that belong to the publication.
+     */
+    public function likes() {
+        return $this
+            ->belongsToMany('App\Publication','publications_likes_users', 'user_id', 'publication_id')
+            ->as('likes');
+    }
+
 }

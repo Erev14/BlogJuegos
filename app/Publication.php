@@ -23,4 +23,13 @@ class Publication extends Model
     protected $casts = [
         'creation_date' => 'datetime',
     ];
+
+    /**
+     * The publications that belong to the user.
+     */
+    public function likes() {
+        return $this
+            ->belongsToMany('App\User', 'publications_likes_users', 'publication_id', 'user_id')
+            ->as('likes');
+    }
 }
