@@ -45,7 +45,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 32;
             }
 
             .links > a {
@@ -70,10 +70,10 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Ingresar</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Registarse</a>
                         @endif
                     @endauth
                 </div>
@@ -81,18 +81,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Blog Juegos
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
             </div>
         </div>
     </body>

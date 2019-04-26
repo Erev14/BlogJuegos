@@ -18,3 +18,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+ * Manera uno de hacer la creacion de rutas
+Route::prefix('user')->group(function () {
+    Route::get('/', 'UserController@index');
+    Route::get('/{id}', 'UserController@find');
+});
+*/
+
+/*
+ * Manera 2 Hacer la creacion de rutas
+ Route::resource('users', 'UserController');
+*/
+
+Route::prefix('admin')->group(function () {
+    Route::resource('users', 'UserController')->only([
+        'index', 'show',
+    ]);
+});

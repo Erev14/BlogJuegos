@@ -14,8 +14,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+      //return User::all(); 
+      return User::with('profile')->get();
     }
+    
+    /*
+    public function find(Request $request) {
+        return User::find($request->id);
+    }
+    */
 
     /**
      * Show the form for creating a new resource.
@@ -46,7 +53,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return $user;
     }
 
     /**
