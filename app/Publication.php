@@ -12,7 +12,7 @@ class Publication extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'urlCover', 
+        'title', 'content', 'urlCover',
     ];
 
     /**
@@ -27,9 +27,28 @@ class Publication extends Model
     /**
      * The publications that belong to the user.
      */
-    public function likes() {
+    public function likes()
+    {
         return $this
             ->belongsToMany('App\User', 'publications_likes_users', 'publication_id', 'user_id')
             ->as('likes');
+    }
+
+    /**
+     * The publications that belong to the user.
+     */
+    public function savedPosts()
+    {
+        return $this
+            ->belongsToMany('App\User', 'publications_saved_users', 'publication_id', 'user_id')
+            ->as('savedPublications');
+    }
+
+    /**
+     * The commentaries from the publication
+     */
+    public function commentaries()
+    {
+        return $this->hasMany('App\Commentary');
     }
 }

@@ -40,24 +40,36 @@ class User extends Authenticatable
     /**
      * Get the profile associated with the user.
      */
-    public function profile() {
+    public function profile()
+    {
         return $this->hasOne('App\Profile', 'user_id');
     }
 
     /**
      * Get the blog publications from the user.
      */
-    public function publications() {
+    public function publications()
+    {
         return $this->hasMany('App\Publication');
     }
 
     /**
      * The users that belong to the publication.
      */
-    public function likes() {
+    public function likes()
+    {
         return $this
-            ->belongsToMany('App\Publication','publications_likes_users', 'user_id', 'publication_id')
+            ->belongsToMany('App\Publication', 'publications_likes_users', 'user_id', 'publication_id')
             ->as('likes');
     }
 
+    /**
+     * The users that belong to the publication.
+     */
+    public function savedPosts()
+    {
+        return $this
+            ->belongsToMany('App\Publication', 'publications_saved_users', 'user_id', 'publication_id')
+            ->as('savedPosts');
+    }
 }
