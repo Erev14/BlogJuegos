@@ -32,7 +32,7 @@ Route::prefix('user')->group(function () {
  Route::resource('users', 'UserController');
 */
 
-Route::prefix('admin')->group(function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'haveProfile', 'isAdmin']], function () {
     Route::resource('users', 'UserController')->only([
         'index', 'show',
     ]);

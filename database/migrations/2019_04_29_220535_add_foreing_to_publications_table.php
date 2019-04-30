@@ -15,16 +15,16 @@ class AddForeingToPublicationsTable extends Migration
     {
         Schema::table('publications', function (Blueprint $table) {
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('classfication_id')->unsigned();
+            $table->bigInteger('classification_id')->unsigned();
 
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');
 
-            $table->foreign('classfication_id')
+            $table->foreign('classification_id')
                 ->references('id')
-                ->on('classfications')
+                ->on('classifications')
                 ->onDelete('cascade');
         });
     }
