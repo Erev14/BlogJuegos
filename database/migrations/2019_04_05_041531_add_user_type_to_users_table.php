@@ -14,7 +14,7 @@ class AddUserTypeToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('user_type'); // 1: standad, 2: admin o creator of content
+            $table->tinyInteger('user_type')->default(1); // 1: standad, 2: admin o creator of content
         });
     }
 
