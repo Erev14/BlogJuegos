@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Publication;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $publications = Publication::with([
+            'likes' => function ($query) {
+                $query->count();
+            },
+        ])->get();
+        return $publications;
+        // return view('home');
     }
 }

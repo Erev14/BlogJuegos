@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Blog Juegos</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -80,6 +80,43 @@
 
     </nav>
     @endif
+
+
+    <div class="containers">
+        <div class="container is-reverse">
+            <section class="is-one-quarter">
+                <ul class="list">
+                    <li class="list-item">
+                        Item 1
+                    </li>
+                    <li class="list-item">
+                        Item 1
+                    </li>
+                    <li class="list-item">
+                        Item 1
+                    </li>
+                </ul>
+            </section>
+            <section class="is-half">
+                <h2 class="title">
+                    Blog Juegos
+                </h2>
+            </section>
+            <section class="is-one-quarter">
+                <ul class="list">
+                    <li class="list-item">
+                        Item 1
+                    </li>
+                    <li class="list-item">
+                        Item 1
+                    </li>
+                    <li class="list-item">
+                        Item 1
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
     <div class="flex-center position-ref full-height">
 
         <div class="content">
