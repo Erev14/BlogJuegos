@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Publication;
 use Illuminate\Http\Request;
+use App\Classification;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -24,12 +26,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $publications = Publication::with([
-            'likes' => function ($query) {
-                $query->count();
-            },
-        ])->get();
-        return $publications;
-        // return view('home');
+        $publications = Publication::withCount([
+            'likes'
+        ])
+            ->paginate(9);
+        $classifications = Classification::all();
+        $categories = Category::all();
+
+        /*
+        return [
+            'skip' => $skip,
+            "limit" => $limit,
+            "publications" => $publications,
+            'classifications' => $classifications,
+            'categories' => $categories,
+        ];
+        */
+        return view('home', [
+            'publications' => $publications,
+        ]);
     }
 }
