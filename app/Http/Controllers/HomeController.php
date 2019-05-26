@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['welcome']]);
     }
 
     /**
@@ -33,17 +33,30 @@ class HomeController extends Controller
         $classifications = Classification::all();
         $categories = Category::all();
 
-        /*
-        return [
-            'skip' => $skip,
-            "limit" => $limit,
-            "publications" => $publications,
-            'classifications' => $classifications,
-            'categories' => $categories,
-        ];
-        */
         return view('home', [
             'publications' => $publications,
+            'classifications' => $classifications,
+            'categories' => $categories
+        ]);
+    }
+
+    /**
+     * show the application welcome page
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function welcome()
+    {
+        $publications = Publication::withCount([
+            'likes'
+        ])
+            ->paginate(9);
+        $classifications = Classification::all();
+        $categories = Category::all();
+
+        return view('welcome', [
+            'publications' => $publications,
+            'classifications' => $classifications,
+            'categories' => $categories
         ]);
     }
 }

@@ -3,24 +3,12 @@
 @section('content')
 <div class="columns is-centered is-multiline">
     <div class="column is-three-quarters">
-        <div class="card">
-            <div class="card-header">Dashboard</div>
 
-            <div class="card-body">
-                @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-                @endif
-
-                You are logged in!
-            </div>
-        </div>
     </div>
     <div class="column is-two-thirds is-centered">
         <ul class="list columns is-multiline">
             @foreach($publications as $publication)
-            <li class="list-item column is-one-third">
+            <!--li class="list-item column is-one-third">
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
@@ -42,7 +30,8 @@
                         </div>
                     </div>
                 </div>
-            </li>
+            </li-->
+            <publication-list-item :publication='@json($publication)'></publication-list-item>
             @endforeach
         </ul>
         {{$publications->links()}}
