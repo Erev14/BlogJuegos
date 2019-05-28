@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-
+/**
+*@see https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
+*@see https://itsolutionstuff.com/post/laravel-58-crud-create-read-update-delete-tutorial-for-beginnersexample.html
+*/
 class UserController extends Controller
 {
     /**
@@ -16,7 +19,7 @@ class UserController extends Controller
     {
       return User::with('profile')->get();
     }
-    
+
     /*
     public function find(Request $request) {
         return User::find($request->id);
@@ -41,7 +44,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        User::create($data);
     }
 
     /**
@@ -55,6 +59,7 @@ class UserController extends Controller
         return $user;
     }
 
+    // GET select user to edit
     /**
      * Show the form for editing the specified resource.
      *
@@ -66,6 +71,7 @@ class UserController extends Controller
         //
     }
 
+    // PUT/PATCH save the edithing info
     /**
      * Update the specified resource in storage.
      *
@@ -86,6 +92,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+      $user->delete();
+
+      return redirect()->route('users.index')
+            ->with('success','Product deleted successfully');
     }
 }
