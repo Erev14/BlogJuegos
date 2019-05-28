@@ -40,3 +40,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'haveProfile', 'isAd
         'index', 'show',
     ]);
 });
+
+Route::group(['prefix' => 'app', 'middleware' => ['auth', 'haveProfile']], function () {
+    Route::resource('users', 'UserController')->except([
+        'create'
+    ]);
+});
