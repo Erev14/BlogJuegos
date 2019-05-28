@@ -2,18 +2,22 @@
 
 Blog de reviews de videojuegos
 
-#Instalacion 
+#Instalacion
 
-1.- git clone https://github.com/balthier59/BlogJuegos 
+1.- git clone https://github.com/balthier59/BlogJuegos
 
 2.- cd BlogJuegos
 
 3.- Composer install
 
-4.- cp .env.example .env 
+4.- cp .env.example .env
 
-5.- php artisan key:generate 
+5.- php artisan key:generate
 
-#autores 
+6.- edit .env with DB info
+
+7.- php artisan migrate
+
+#autores
 - Mejia Blanco Erick
 - Ruiz Gonzalez Jesus Armando
