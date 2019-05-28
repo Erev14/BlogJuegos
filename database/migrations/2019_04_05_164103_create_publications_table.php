@@ -36,6 +36,9 @@ class CreatePublicationsTable extends Migration
      */
     public function down()
     {
+        Schema::table('publications', function (Blueprint $table) {
+          $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('publications');
     }
 }
