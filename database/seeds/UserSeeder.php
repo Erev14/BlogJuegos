@@ -23,5 +23,9 @@ class UserSeeder extends Seeder
             'email_verified_at' => Carbon::now()
         ]);
         $user_admin->profile()->save(factory(Profile::class)->make());
+
+        factory(User::class, 9)->create()->each(function ($user) {
+            $user->profile()->save(factory(Profile::class)->make());
+        });
     }
 }
