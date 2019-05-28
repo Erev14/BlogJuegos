@@ -39,7 +39,8 @@ class CreatePublicationsSavedUsersTable extends Migration
     public function down()
     {
         Schema::table('publications_saved_users', function (Blueprint $table) {
-          $table->dropForeign(['publication_id', 'user_id']);
+          $table->dropForeign(['publication_id']);
+          $table->dropForeign(['user_id']);
         });
         Schema::dropIfExists('publications_saved_users');
     }

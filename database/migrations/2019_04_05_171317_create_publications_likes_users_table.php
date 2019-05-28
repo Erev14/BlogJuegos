@@ -39,7 +39,8 @@ class CreatePublicationsLikesUsersTable extends Migration
     public function down()
     {
         Schema::table('publications_likes_users', function (Blueprint $table) {
-          $table->dropForeign(['user_id', 'publication_id']);
+          $table->dropForeign(['user_id']);
+          $table->dropForeign(['publication_id']);
         });
         Schema::dropIfExists('publications_likes_users');
     }

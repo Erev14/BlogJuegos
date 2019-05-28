@@ -37,10 +37,8 @@ class AddForeingToPublicationsTable extends Migration
     public function down()
     {
         Schema::table('publications', function (Blueprint $table) {
-          $table->dropForeign(['category_id', 'classification_id']);
-        });
-        Schema::table('publications', function (Blueprint $table) {
-            //
+          $table->dropForeign(['category_id']);
+          $table->dropForeign(['classification_id']);
         });
     }
 }
