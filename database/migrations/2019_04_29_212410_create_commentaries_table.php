@@ -18,7 +18,8 @@ class CreateCommentariesTable extends Migration
             $table->text('comment');
             $table->integer('publication_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->timestamps();
+            $table->softDeletesTz();
+            $table->timestampsTz();
 
             $table->foreign('publication_id')
                 ->references('id')

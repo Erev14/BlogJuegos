@@ -20,7 +20,7 @@ class CreateProfilesTable extends Migration
             $table->string('last_name', 50);
             $table->tinyInteger('age');
             $table->integer('user_id')->unsigned();
-            $table->timestamps();
+            $table->timestampsTz();
 
             $table->foreign('user_id')
                 ->references('id')

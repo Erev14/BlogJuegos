@@ -20,7 +20,8 @@ class CreatePublicationsTable extends Migration
             $table->text('content');
             $table->text('urlCover');
             $table->integer('user_id')->unsigned();
-            $table->timestamps();
+            $table->softDeletesTz();
+            $table->timestampsTz();
 
             $table->foreign('user_id')
                 ->references('id')
