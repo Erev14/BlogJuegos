@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->softDeletesTz();
-            $table->timestampTz();
+            $table->timestampsTz();
         });
     }
 
