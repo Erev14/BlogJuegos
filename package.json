@@ -25,6 +25,6 @@
     },
     "dependencies": {
         "bulma": "^0.7.4",
-        "moment": "^2.24.0"
+        "moment": "^2.29.2"
     }
 }
